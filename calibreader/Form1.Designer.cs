@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.viewcali = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
@@ -39,6 +37,14 @@
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripTextBox4 = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripTextBox5 = new System.Windows.Forms.ToolStripTextBox();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lens_type = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.focus_idx = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.zoom_idx = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.inf_tele_focus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.inf_wide_focus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.focus_dynamic_offset = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.show_log = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.viewcali)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -48,25 +54,23 @@
             this.viewcali.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.viewcali.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.viewcali.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.viewcali.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.viewcali.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2});
+            this.id,
+            this.lens_type,
+            this.focus_idx,
+            this.zoom_idx,
+            this.inf_tele_focus,
+            this.inf_wide_focus,
+            this.focus_dynamic_offset,
+            this.show_log});
             this.viewcali.Location = new System.Drawing.Point(0, 27);
             this.viewcali.Name = "viewcali";
             this.viewcali.RowTemplate.Height = 24;
-            this.viewcali.Size = new System.Drawing.Size(800, 424);
+            this.viewcali.Size = new System.Drawing.Size(887, 424);
             this.viewcali.TabIndex = 0;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Column1";
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Column2";
-            this.Column2.Name = "Column2";
             // 
             // menuStrip1
             // 
@@ -76,7 +80,7 @@
             this.toolStripMenuItem3});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(887, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -129,11 +133,52 @@
             this.toolStripTextBox5.Size = new System.Drawing.Size(100, 23);
             this.toolStripTextBox5.Text = "About";
             // 
+            // id
+            // 
+            this.id.HeaderText = "ID";
+            this.id.Name = "id";
+            // 
+            // lens_type
+            // 
+            this.lens_type.HeaderText = "lens_type";
+            this.lens_type.Name = "lens_type";
+            // 
+            // focus_idx
+            // 
+            this.focus_idx.HeaderText = "focus_idx";
+            this.focus_idx.Name = "focus_idx";
+            // 
+            // zoom_idx
+            // 
+            this.zoom_idx.HeaderText = "zoom_idx";
+            this.zoom_idx.Name = "zoom_idx";
+            // 
+            // inf_tele_focus
+            // 
+            this.inf_tele_focus.HeaderText = "inf_tele_focus";
+            this.inf_tele_focus.Name = "inf_tele_focus";
+            // 
+            // inf_wide_focus
+            // 
+            this.inf_wide_focus.HeaderText = "inf_wide_focus";
+            this.inf_wide_focus.Name = "inf_wide_focus";
+            // 
+            // focus_dynamic_offset
+            // 
+            this.focus_dynamic_offset.HeaderText = "focus_dynamic_offset";
+            this.focus_dynamic_offset.Name = "focus_dynamic_offset";
+            // 
+            // show_log
+            // 
+            this.show_log.HeaderText = "Show_log";
+            this.show_log.Name = "show_log";
+            this.show_log.Text = "Show log";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(887, 450);
             this.Controls.Add(this.viewcali);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -150,8 +195,6 @@
         #endregion
 
         private System.Windows.Forms.DataGridView viewcali;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripTextBox toolStripTextBox1;
@@ -160,6 +203,14 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
         private System.Windows.Forms.ToolStripTextBox toolStripTextBox4;
         private System.Windows.Forms.ToolStripTextBox toolStripTextBox5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lens_type;
+        private System.Windows.Forms.DataGridViewTextBoxColumn focus_idx;
+        private System.Windows.Forms.DataGridViewTextBoxColumn zoom_idx;
+        private System.Windows.Forms.DataGridViewTextBoxColumn inf_tele_focus;
+        private System.Windows.Forms.DataGridViewTextBoxColumn inf_wide_focus;
+        private System.Windows.Forms.DataGridViewTextBoxColumn focus_dynamic_offset;
+        private System.Windows.Forms.DataGridViewButtonColumn show_log;
     }
 }
 

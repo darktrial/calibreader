@@ -71,6 +71,7 @@
             this.viewcali.RowTemplate.Height = 24;
             this.viewcali.Size = new System.Drawing.Size(887, 424);
             this.viewcali.TabIndex = 0;
+            this.viewcali.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.viewcali_CellContentClick);
             // 
             // menuStrip1
             // 
@@ -173,6 +174,7 @@
             this.show_log.HeaderText = "Show_log";
             this.show_log.Name = "show_log";
             this.show_log.Text = "Show log";
+            this.show_log.UseColumnTextForButtonValue = true;
             // 
             // Form1
             // 

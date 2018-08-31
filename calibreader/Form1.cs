@@ -146,7 +146,49 @@ namespace calibreader
             }
             di.Delete(true);
         }
-        
+
+        public void getStatsInFolder(string directory_path)
+        {
+            string tmppath = directory_path + "\\calitmp";
+            string statpath = directory_path + "\\calitmp\\mnt\\nand\\";
+
+            DirectoryInfo di;
+
+            string[] files = Directory.GetFiles(directory_path, "*.tar.gz");
+            foreach (string filePath in files)
+            {
+                if (Directory.Exists(tmppath))
+                {
+                    if (!IsDirectoryEmpty(tmppath))
+                        Directory.Delete(tmppath, true);
+                }
+                di = Directory.CreateDirectory(tmppath);
+                if (File.Exists(filePath))
+                {
+                    ExtractTGZ(filePath, tmppath);
+                    string focus_idx = getProductionLog(statpath + "\\lens\\focus_idx");
+                    string focus_dynamic_offset = getProductionLog(statpath + "\\lens\\focus_dynamic_offset");
+                    string inf_tele_focus = getProductionLog(statpath + "\\lens\\inf_tele_focus");
+                    string inf_wide_focus = getProductionLog(statpath + "\\lens\\inf_wide_focus");
+                    string lens_type = getProductionLog(statpath + "\\lens\\lens_type");
+                    string zoom_idx = getProductionLog(statpath + "\\lens\\zoom_idx");
+                    string focus_value = getProductionLog(statpath + "\\lens\\focus_value");
+                    string icr_mode = getProductionLog(statpath + "\\lens\\icr_mode");
+                    string production = getProductionLog(statpath + "\\factory\\production");
+                    string production_time = getProductionLog(statpath + "\\factory\\production_time");
+                    string testcase_time = getProductionLog(statpath + "\\factory\\TestCase_time");
+                    string awb_low_adj = getProductionLog(statpath + "\\cam_cali\\awb_low_adj");
+                    string cali_log = getProductionLog(statpath + "\\cam_cali\\cali_log");
+                    string awb_high_info = getProductionLog(statpath + "\\cam_cali\\debug\\awb_high_info");
+                    string awb_low_info = getProductionLog(statpath + "\\cam_cali\\debug\\awb_low_info");
+                    string lens_info = getProductionLog(statpath + "\\cam_cali\\debug\\lens_info");
+                    string[] pathSplit = filePath.Split('\\');
+                    string[] fileName = pathSplit.Last().Split('.');
+                    this.viewcali.Rows.Add(fileName[0].ToString(), lens_type, focus_idx, zoom_idx, inf_tele_focus, inf_wide_focus, focus_dynamic_offset, focus_value, icr_mode, production, awb_low_adj, awb_high_info, awb_low_info, lens_info, cali_log, production_time);
+                }
+                di.Delete(true);
+            }
+        }
 
         private void onOpenFileClick(object sender, EventArgs e)
         {
@@ -162,5 +204,21 @@ namespace calibreader
             }
         }
 
+        private void onOpenFolder(object sender, EventArgs e)
+        {
+            FolderBrowserDialog folderDlg = new FolderBrowserDialog();
+            DialogResult result = folderDlg.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                //Debug.WriteLine(folderDlg.SelectedPath);
+                getStatsInFolder(folderDlg.SelectedPath);
+            }
+        }
+
+        private void exportFile(object sender, EventArgs e)
+        {
+
+        }
     }
 }

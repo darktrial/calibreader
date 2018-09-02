@@ -22,6 +22,7 @@ namespace calibreader
 {
     public partial class Form1 : Form
     {
+        public const int max_column_count=16;
         public static bool ExtractTGZ(String gzArchiveName, String destFolder)
         {
             Stream inStream = File.OpenRead(gzArchiveName);
@@ -93,8 +94,7 @@ namespace calibreader
         }
         public Form1()
         {
-            InitializeComponent();
-
+            InitializeComponent();         
             /*DataGridViewRow row = (DataGridViewRow)viewcali.Rows[0].Clone();
             row.Cells[0].Value = "XYZ";
             row.Cells[1].Value = 50.2;
@@ -205,6 +205,8 @@ namespace calibreader
             openFileDialog1.Title = "Select a production log File";
             if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
+                for (int j = 0; j < max_column_count; j++)
+                    this.viewcali.Columns[j].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
                 //Debug.WriteLine(openFileDialog1.FileName);
                 //Debug.WriteLine(Path.GetDirectoryName(openFileDialog1.FileName));
                 getStats(openFileDialog1.FileName, Path.GetDirectoryName(openFileDialog1.FileName));
@@ -218,6 +220,8 @@ namespace calibreader
 
             if (result == DialogResult.OK)
             {
+                for (int j = 0; j < max_column_count; j++)
+                    this.viewcali.Columns[j].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
                 //Debug.WriteLine(folderDlg.SelectedPath);
                 getStatsInFolder(folderDlg.SelectedPath);
             }
@@ -315,7 +319,7 @@ namespace calibreader
                 int rcount = worksheet.UsedRange.Rows.Count;               
                 int i = 1;
                 //this.viewcali.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-                for (int j=0;j<16;j++)
+                for (int j=0;j< max_column_count; j++)
                     this.viewcali.Columns[j].AutoSizeMode= DataGridViewAutoSizeColumnMode.DisplayedCells; 
 
                 for (; i < rcount; i++)

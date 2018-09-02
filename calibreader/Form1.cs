@@ -10,13 +10,16 @@ using System.Windows.Forms;
 using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
+using System.Xml;
 
 using ICSharpCode.SharpZipLib.BZip2;
 using ICSharpCode.SharpZipLib.Tar;
 using ClosedXML.Excel;
+using Excel = Microsoft.Office.Interop.Excel;
+using System.Reflection;
 
 namespace calibreader
-{ 
+{
     public partial class Form1 : Form
     {
         public static bool ExtractTGZ(String gzArchiveName, String destFolder)
@@ -31,7 +34,8 @@ namespace calibreader
             catch (Exception e)
             {
                 Debug.WriteLine(e.ToString());
-                return false; }
+                return false;
+            }
 
             try
             {
@@ -40,7 +44,8 @@ namespace calibreader
             catch (Exception e)
             {
                 Debug.WriteLine(e.ToString());
-                return false; }
+                return false;
+            }
             tarArchive.ExtractContents(destFolder);
             tarArchive.Close();
 
@@ -111,8 +116,8 @@ namespace calibreader
         }*/
 
 
-        public void getStats(string filePath,string directory_path)
-        {          
+        public void getStats(string filePath, string directory_path)
+        {
             string tmppath = directory_path + "\\calitmp";
             string statpath = directory_path + "\\calitmp\\mnt\\nand\\";
 
@@ -125,26 +130,26 @@ namespace calibreader
             di = Directory.CreateDirectory(tmppath);
             if (File.Exists(filePath))
             {
-                ExtractTGZ(filePath,tmppath);
+                ExtractTGZ(filePath, tmppath);
                 string focus_idx = getProductionLog(statpath + "\\lens\\focus_idx");
-                string focus_dynamic_offset = getProductionLog(statpath + "\\lens\\focus_dynamic_offset");               
-                string inf_tele_focus = getProductionLog(statpath + "\\lens\\inf_tele_focus");                
-                string inf_wide_focus = getProductionLog(statpath + "\\lens\\inf_wide_focus");                
-                string lens_type = getProductionLog(statpath + "\\lens\\lens_type");               
-                string zoom_idx = getProductionLog(statpath + "\\lens\\zoom_idx");               
-                string focus_value = getProductionLog(statpath + "\\lens\\focus_value");               
-                string icr_mode = getProductionLog(statpath + "\\lens\\icr_mode");               
-                string production = getProductionLog(statpath + "\\factory\\production");              
-                string production_time = getProductionLog(statpath + "\\factory\\production_time");              
-                string testcase_time = getProductionLog(statpath + "\\factory\\TestCase_time");             
-                string awb_low_adj = getProductionLog(statpath + "\\cam_cali\\awb_low_adj");             
-                string cali_log = getProductionLog(statpath + "\\cam_cali\\cali_log");               
-                string awb_high_info = getProductionLog(statpath + "\\cam_cali\\debug\\awb_high_info");              
-                string awb_low_info = getProductionLog(statpath + "\\cam_cali\\debug\\awb_low_info");               
+                string focus_dynamic_offset = getProductionLog(statpath + "\\lens\\focus_dynamic_offset");
+                string inf_tele_focus = getProductionLog(statpath + "\\lens\\inf_tele_focus");
+                string inf_wide_focus = getProductionLog(statpath + "\\lens\\inf_wide_focus");
+                string lens_type = getProductionLog(statpath + "\\lens\\lens_type");
+                string zoom_idx = getProductionLog(statpath + "\\lens\\zoom_idx");
+                string focus_value = getProductionLog(statpath + "\\lens\\focus_value");
+                string icr_mode = getProductionLog(statpath + "\\lens\\icr_mode");
+                string production = getProductionLog(statpath + "\\factory\\production");
+                string production_time = getProductionLog(statpath + "\\factory\\production_time");
+                string testcase_time = getProductionLog(statpath + "\\factory\\TestCase_time");
+                string awb_low_adj = getProductionLog(statpath + "\\cam_cali\\awb_low_adj");
+                string cali_log = getProductionLog(statpath + "\\cam_cali\\cali_log");
+                string awb_high_info = getProductionLog(statpath + "\\cam_cali\\debug\\awb_high_info");
+                string awb_low_info = getProductionLog(statpath + "\\cam_cali\\debug\\awb_low_info");
                 string lens_info = getProductionLog(statpath + "\\cam_cali\\debug\\lens_info");
                 string[] pathSplit = filePath.Split('\\');
                 string[] fileName = pathSplit.Last().Split('.');
-                this.viewcali.Rows.Add(fileName[0].ToString(), lens_type, focus_idx,zoom_idx,inf_tele_focus,inf_wide_focus,focus_dynamic_offset,focus_value,icr_mode,production,awb_low_adj,awb_high_info,awb_low_info,lens_info,cali_log,production_time);
+                this.viewcali.Rows.Add(fileName[0].ToString(), lens_type, focus_idx, zoom_idx, inf_tele_focus, inf_wide_focus, focus_dynamic_offset, focus_value, icr_mode, production, awb_low_adj, awb_high_info, awb_low_info, lens_info, cali_log, production_time);
             }
             di.Delete(true);
         }
@@ -197,7 +202,7 @@ namespace calibreader
             // Displays an OpenFileDialog so the user can select a Cursor.  
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
             openFileDialog1.Filter = "Camera File|*.tar.gz";
-            openFileDialog1.Title = "Select a camera log File";
+            openFileDialog1.Title = "Select a production log File";
             if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 //Debug.WriteLine(openFileDialog1.FileName);
@@ -295,6 +300,46 @@ namespace calibreader
         {
             ExportToExcelWithFormatting(this.viewcali);
         }
-       
+
+        private void importFromXML(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.Filter = "Camera File|*.xlsx";
+            openFileDialog1.Title = "Select a excel Log File";
+            if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                Excel.Application app = new Microsoft.Office.Interop.Excel.Application();
+                Excel.Workbook workbook = app.Workbooks.Open(openFileDialog1.FileName);
+                Excel.Worksheet worksheet = workbook.ActiveSheet;
+                //this.viewcali.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+                int rcount = worksheet.UsedRange.Rows.Count;               
+                int i = 1;
+                //this.viewcali.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+                for (int j=0;j<16;j++)
+                    this.viewcali.Columns[j].AutoSizeMode= DataGridViewAutoSizeColumnMode.DisplayedCells; 
+
+                for (; i < rcount; i++)
+                {
+                    //dataGridView1.Rows[i].Cells["Column1"].Value = worksheet.Cells[i + 1, 1].Value;
+                    //dataGridView1.Rows[i].Cells["Column2"].Value = worksheet.Cells[i + 1, 2].Value;
+                    this.viewcali.Rows.Add(worksheet.Cells[i + 1, 1].Value, worksheet.Cells[i + 1, 2].Value,
+                        worksheet.Cells[i + 1, 3].Value, 
+                        worksheet.Cells[i + 1, 4].Value,
+                        worksheet.Cells[i + 1, 5].Value, 
+                        worksheet.Cells[i + 1, 6].Value, 
+                        worksheet.Cells[i + 1, 7].Value, 
+                        worksheet.Cells[i + 1, 8].Value, 
+                        worksheet.Cells[i + 1, 9].Value, 
+                        worksheet.Cells[i + 1, 10].Value, 
+                        worksheet.Cells[i + 1, 11].Value, 
+                        worksheet.Cells[i + 1, 12].Value, 
+                        worksheet.Cells[i + 1, 13].Value, 
+                        worksheet.Cells[i + 1, 14].Value, 
+                        worksheet.Cells[i + 1, 15].Value, 
+                        worksheet.Cells[i + 1, 16].Value);
+                }
+                workbook.Close();
+            }
+        }
     }
-}
+ }

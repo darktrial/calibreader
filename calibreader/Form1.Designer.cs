@@ -28,21 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
             this.viewcali = new System.Windows.Forms.DataGridView();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.openFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
-            this.importStatsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.importxml = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripTextBox4 = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripTextBox5 = new System.Windows.Forms.ToolStripTextBox();
@@ -117,37 +117,38 @@
             this.openFolderToolStripMenuItem,
             this.toolStripMenuItem2,
             this.toolStripMenuItem4,
-            this.importStatsToolStripMenuItem});
+            this.importxml});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(45, 23);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(45, 24);
             this.toolStripMenuItem1.Text = "File";
             // 
             // openFolderToolStripMenuItem
             // 
             this.openFolderToolStripMenuItem.Name = "openFolderToolStripMenuItem";
-            this.openFolderToolStripMenuItem.Size = new System.Drawing.Size(171, 26);
+            this.openFolderToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.openFolderToolStripMenuItem.Text = "Open File";
             this.openFolderToolStripMenuItem.Click += new System.EventHandler(this.onOpenFileClick);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(171, 26);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(216, 26);
             this.toolStripMenuItem2.Text = "Open Folder";
             this.toolStripMenuItem2.Click += new System.EventHandler(this.onOpenFolder);
             // 
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(171, 26);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(216, 26);
             this.toolStripMenuItem4.Text = "Export stats";
             this.toolStripMenuItem4.Click += new System.EventHandler(this.exportFile);
             // 
-            // importStatsToolStripMenuItem
+            // importxml
             // 
-            this.importStatsToolStripMenuItem.Name = "importStatsToolStripMenuItem";
-            this.importStatsToolStripMenuItem.Size = new System.Drawing.Size(171, 26);
-            this.importStatsToolStripMenuItem.Text = "Import Stats";
+            this.importxml.Name = "importxml";
+            this.importxml.Size = new System.Drawing.Size(216, 26);
+            this.importxml.Text = "Import Stats";
+            this.importxml.Click += new System.EventHandler(this.importFromXML);
             // 
             // toolStripMenuItem3
             // 
@@ -155,7 +156,7 @@
             this.toolStripTextBox4,
             this.toolStripTextBox5});
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(53, 23);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(53, 24);
             this.toolStripMenuItem3.Text = "Help";
             // 
             // toolStripTextBox4
@@ -179,8 +180,8 @@
             // lens_type
             // 
             this.lens_type.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.lens_type.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.lens_type.DefaultCellStyle = dataGridViewCellStyle17;
             this.lens_type.HeaderText = "lens_type";
             this.lens_type.Name = "lens_type";
             // 
@@ -229,56 +230,56 @@
             // production
             // 
             this.production.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.production.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.production.DefaultCellStyle = dataGridViewCellStyle18;
             this.production.HeaderText = "production";
             this.production.Name = "production";
             // 
             // awb_low_adj
             // 
             this.awb_low_adj.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.awb_low_adj.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.awb_low_adj.DefaultCellStyle = dataGridViewCellStyle19;
             this.awb_low_adj.HeaderText = "awb_low_adj";
             this.awb_low_adj.Name = "awb_low_adj";
             // 
             // awb_high_info
             // 
             this.awb_high_info.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.awb_high_info.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.awb_high_info.DefaultCellStyle = dataGridViewCellStyle20;
             this.awb_high_info.HeaderText = "awb_high_info";
             this.awb_high_info.Name = "awb_high_info";
             // 
             // awb_low_info
             // 
             this.awb_low_info.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.awb_low_info.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.awb_low_info.DefaultCellStyle = dataGridViewCellStyle21;
             this.awb_low_info.HeaderText = "awb_low_info";
             this.awb_low_info.Name = "awb_low_info";
             // 
             // lens_info
             // 
             this.lens_info.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.lens_info.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.lens_info.DefaultCellStyle = dataGridViewCellStyle22;
             this.lens_info.HeaderText = "lens_info";
             this.lens_info.Name = "lens_info";
             // 
             // cali_log
             // 
             this.cali_log.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.cali_log.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.cali_log.DefaultCellStyle = dataGridViewCellStyle23;
             this.cali_log.HeaderText = "cali_log";
             this.cali_log.Name = "cali_log";
             // 
             // productoin_time
             // 
             this.productoin_time.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.productoin_time.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.productoin_time.DefaultCellStyle = dataGridViewCellStyle24;
             this.productoin_time.HeaderText = "productoin_time";
             this.productoin_time.Name = "productoin_time";
             // 
@@ -292,7 +293,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Form1";
-            this.Text = "Camera log reader";
+            this.Text = "Production log reader";
             ((System.ComponentModel.ISupportInitialize)(this.viewcali)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -312,7 +313,7 @@
         private System.Windows.Forms.ToolStripMenuItem openFolderToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
-        private System.Windows.Forms.ToolStripMenuItem importStatsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem importxml;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn lens_type;
         private System.Windows.Forms.DataGridViewTextBoxColumn focus_idx;

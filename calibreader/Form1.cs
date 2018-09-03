@@ -18,6 +18,7 @@ using ClosedXML.Excel;
 using Excel = Microsoft.Office.Interop.Excel;
 using System.Reflection;
 using System.Threading;
+using AutoUpdaterDotNET;
 
 namespace calibreader
 {
@@ -473,6 +474,19 @@ namespace calibreader
         {
             about ab = new about();
             ab.Show();
+
+        }
+        private void AutoUpdater_ApplicationExitEvent()
+        {
+            Text = @"Closing application...";
+            Thread.Sleep(1000);
+            Application.Exit();
+        }
+        private void OnClickAutoUpdate(object sender, EventArgs e)
+        {
+            AutoUpdater.ShowRemindLaterButton = false;
+            AutoUpdater.ApplicationExitEvent += AutoUpdater_ApplicationExitEvent;
+            AutoUpdater.Start("http://172.17.81.213/release/app.xml");
 
         }
     }

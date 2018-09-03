@@ -37,11 +37,11 @@
             this.importxml = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripTextBox4 = new System.Windows.Forms.ToolStripMenuItem();
-            this.findBox = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
             this.checkUpdate = new System.Windows.Forms.ToolStripMenuItem();
             this.about = new System.Windows.Forms.ToolStripMenuItem();
+            this.findBox = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.viewcali)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -54,10 +54,11 @@
             this.viewcali.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.viewcali.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.viewcali.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.viewcali.Location = new System.Drawing.Point(0, 27);
+            this.viewcali.Location = new System.Drawing.Point(0, 34);
+            this.viewcali.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.viewcali.Name = "viewcali";
             this.viewcali.RowTemplate.Height = 24;
-            this.viewcali.Size = new System.Drawing.Size(1597, 525);
+            this.viewcali.Size = new System.Drawing.Size(2129, 656);
             this.viewcali.TabIndex = 0;
             // 
             // menuStrip1
@@ -69,7 +70,8 @@
             this.toolStripMenuItem5});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1597, 24);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(2129, 27);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -81,34 +83,34 @@
             this.toolStripMenuItem4,
             this.importxml});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(39, 20);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(45, 23);
             this.toolStripMenuItem1.Text = "File";
             // 
             // openFolderToolStripMenuItem
             // 
             this.openFolderToolStripMenuItem.Name = "openFolderToolStripMenuItem";
-            this.openFolderToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.openFolderToolStripMenuItem.Size = new System.Drawing.Size(171, 26);
             this.openFolderToolStripMenuItem.Text = "Open File";
             this.openFolderToolStripMenuItem.Click += new System.EventHandler(this.onOpenFileClick);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(147, 22);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(171, 26);
             this.toolStripMenuItem2.Text = "Open Folder";
             this.toolStripMenuItem2.Click += new System.EventHandler(this.onOpenFolder);
             // 
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(147, 22);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(171, 26);
             this.toolStripMenuItem4.Text = "Export stats";
             this.toolStripMenuItem4.Click += new System.EventHandler(this.exportFile);
             // 
             // importxml
             // 
             this.importxml.Name = "importxml";
-            this.importxml.Size = new System.Drawing.Size(147, 22);
+            this.importxml.Size = new System.Drawing.Size(171, 26);
             this.importxml.Text = "Import Stats";
             this.importxml.Click += new System.EventHandler(this.importFromXML);
             // 
@@ -117,34 +119,15 @@
             this.toolStripMenuItem3.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripTextBox4});
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(46, 20);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(51, 23);
             this.toolStripMenuItem3.Text = "Tool";
             // 
             // toolStripTextBox4
             // 
             this.toolStripTextBox4.Name = "toolStripTextBox4";
-            this.toolStripTextBox4.Size = new System.Drawing.Size(180, 22);
+            this.toolStripTextBox4.Size = new System.Drawing.Size(155, 26);
             this.toolStripTextBox4.Text = "Clear data";
             this.toolStripTextBox4.Click += new System.EventHandler(this.OnClearData);
-            // 
-            // findBox
-            // 
-            this.findBox.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.findBox.Location = new System.Drawing.Point(338, 1);
-            this.findBox.Name = "findBox";
-            this.findBox.Size = new System.Drawing.Size(132, 23);
-            this.findBox.TabIndex = 2;
-            this.findBox.TextChanged += new System.EventHandler(this.OnTextChange);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label1.Location = new System.Drawing.Point(297, 4);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 16);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Find:";
             // 
             // toolStripMenuItem5
             // 
@@ -152,32 +135,55 @@
             this.checkUpdate,
             this.about});
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(55, 20);
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(63, 23);
             this.toolStripMenuItem5.Text = "About";
             // 
             // checkUpdate
             // 
             this.checkUpdate.Name = "checkUpdate";
-            this.checkUpdate.Size = new System.Drawing.Size(180, 22);
+            this.checkUpdate.Size = new System.Drawing.Size(216, 26);
             this.checkUpdate.Text = "Check update";
+            this.checkUpdate.Click += new System.EventHandler(this.OnClickAutoUpdate);
             // 
             // about
             // 
             this.about.Name = "about";
-            this.about.Size = new System.Drawing.Size(180, 22);
+            this.about.Size = new System.Drawing.Size(216, 26);
             this.about.Text = "About";
             this.about.Click += new System.EventHandler(this.onClickAbout);
             // 
+            // findBox
+            // 
+            this.findBox.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.findBox.Location = new System.Drawing.Point(451, 1);
+            this.findBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.findBox.Name = "findBox";
+            this.findBox.Size = new System.Drawing.Size(175, 27);
+            this.findBox.TabIndex = 2;
+            this.findBox.TextChanged += new System.EventHandler(this.OnTextChange);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label1.Location = new System.Drawing.Point(396, 5);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(43, 19);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Find:";
+            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1597, 551);
+            this.ClientSize = new System.Drawing.Size(2129, 689);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.findBox);
             this.Controls.Add(this.viewcali);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Form1";
             this.Text = "Production log reader";
             ((System.ComponentModel.ISupportInitialize)(this.viewcali)).EndInit();

@@ -24,6 +24,7 @@ namespace calibreader
     public partial class Form1 : Form
     {
         public const int max_column_count=16;
+        public DataTable cali_dt;
         public static bool ExtractTGZ(String gzArchiveName, String destFolder)
         {
             Stream inStream = File.OpenRead(gzArchiveName);
@@ -96,15 +97,47 @@ namespace calibreader
         public Form1()
         {
             InitializeComponent();         
-            /*DataGridViewRow row = (DataGridViewRow)viewcali.Rows[0].Clone();
-            row.Cells[0].Value = "XYZ";
-            row.Cells[1].Value = 50.2;
-            viewcali.Rows.Add(row);*/
-            //this.viewcali.Rows.Add("1", "2", "3", "4", "5", "6", "7");
-            //Debug.WriteLine("1234");
-            //this.viewcali.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
+            
             this.viewcali.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.viewcali.AllowUserToAddRows = false;
+
+            //initial data table;
+            cali_dt = new DataTable();
+            DataColumn dc;
+            dc = new DataColumn("ID", typeof(String));
+            cali_dt.Columns.Add(dc);
+            dc = new DataColumn("lens_type", typeof(String));
+            cali_dt.Columns.Add(dc);
+            dc = new DataColumn("focus_idx", typeof(String));
+            cali_dt.Columns.Add(dc);
+            dc = new DataColumn("zoom_idx", typeof(String));
+            cali_dt.Columns.Add(dc);
+            dc = new DataColumn("inf_tele_focus", typeof(String));
+            cali_dt.Columns.Add(dc);
+            dc = new DataColumn("inf_wide_focus", typeof(String));
+            cali_dt.Columns.Add(dc);
+            dc = new DataColumn("focus_dynamic_offset", typeof(String));
+            cali_dt.Columns.Add(dc);
+            dc = new DataColumn("focus_value", typeof(String));
+            cali_dt.Columns.Add(dc);           
+            dc = new DataColumn("icr_mode", typeof(String));
+            cali_dt.Columns.Add(dc);
+            dc = new DataColumn("production", typeof(String));
+            cali_dt.Columns.Add(dc);          
+            dc = new DataColumn("awb_low_adj", typeof(String));
+            cali_dt.Columns.Add(dc);
+            dc = new DataColumn("awb_high_info", typeof(String));
+            cali_dt.Columns.Add(dc);           
+            dc = new DataColumn("awb_low_info", typeof(String));
+            cali_dt.Columns.Add(dc);
+            dc = new DataColumn("lens_info", typeof(String));
+            cali_dt.Columns.Add(dc);
+            dc = new DataColumn("cali_log", typeof(String));
+            cali_dt.Columns.Add(dc);
+            dc = new DataColumn("production_time", typeof(String));
+            cali_dt.Columns.Add(dc);
+            this.viewcali.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            this.viewcali.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
         }
         /*private void viewcali_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -150,7 +183,28 @@ namespace calibreader
                 string lens_info = getProductionLog(statpath + "\\cam_cali\\debug\\lens_info");
                 string[] pathSplit = filePath.Split('\\');
                 string[] fileName = pathSplit.Last().Split('.');
-                this.viewcali.Rows.Add(fileName[0].ToString(), lens_type, focus_idx, zoom_idx, inf_tele_focus, inf_wide_focus, focus_dynamic_offset, focus_value, icr_mode, production, awb_low_adj, awb_high_info, awb_low_info, lens_info, cali_log, production_time);
+                //this.viewcali.Rows.Add(fileName[0].ToString(), lens_type, focus_idx, zoom_idx, inf_tele_focus, inf_wide_focus, focus_dynamic_offset, focus_value, icr_mode, production, awb_low_adj, awb_high_info, awb_low_info, lens_info, cali_log, production_time);
+                DataRow newRow = cali_dt.NewRow();
+                newRow[0] = fileName[0].ToString();
+                newRow[1] = lens_type;
+                newRow[2] = focus_idx;
+                newRow[3] = zoom_idx;
+                newRow[4] = inf_tele_focus;
+                newRow[5] = inf_wide_focus;
+                newRow[6] = focus_dynamic_offset;
+                newRow[7] = focus_value;
+                newRow[8] = icr_mode;
+                newRow[9] = production;
+                newRow[10] = awb_low_adj;
+                newRow[11] = awb_high_info;
+                newRow[12] = awb_low_info;
+                newRow[13] = lens_info;
+                newRow[14] = cali_log;
+                newRow[15] = production_time;
+                //cali_dt.Rows.Add(newRow);
+                cali_dt.Rows.InsertAt(newRow, 0);
+                this.viewcali.DataSource = cali_dt;
+
             }
             di.Delete(true);
         }
@@ -192,7 +246,26 @@ namespace calibreader
                     string lens_info = getProductionLog(statpath + "\\cam_cali\\debug\\lens_info");
                     string[] pathSplit = filePath.Split('\\');
                     string[] fileName = pathSplit.Last().Split('.');
-                    this.viewcali.Rows.Add(fileName[0].ToString(), lens_type, focus_idx, zoom_idx, inf_tele_focus, inf_wide_focus, focus_dynamic_offset, focus_value, icr_mode, production, awb_low_adj, awb_high_info, awb_low_info, lens_info, cali_log, production_time);
+                    //this.viewcali.Rows.Add(fileName[0].ToString(), lens_type, focus_idx, zoom_idx, inf_tele_focus, inf_wide_focus, focus_dynamic_offset, focus_value, icr_mode, production, awb_low_adj, awb_high_info, awb_low_info, lens_info, cali_log, production_time);
+                    DataRow newRow = cali_dt.NewRow();
+                    newRow[0] = fileName[0].ToString();
+                    newRow[1] = lens_type;
+                    newRow[2] = focus_idx;
+                    newRow[3] = zoom_idx;
+                    newRow[4] = inf_tele_focus;
+                    newRow[5] = inf_wide_focus;
+                    newRow[6] = focus_dynamic_offset;
+                    newRow[7] = focus_value;
+                    newRow[8] = icr_mode;
+                    newRow[9] = production;
+                    newRow[10] = awb_low_adj;
+                    newRow[11] = awb_high_info;
+                    newRow[12] = awb_low_info;
+                    newRow[13] = lens_info;
+                    newRow[14] = cali_log;
+                    newRow[15] = production_time;
+                    cali_dt.Rows.Add(newRow);
+                    this.viewcali.DataSource = cali_dt;
                 }
                 di.Delete(true);
             }
@@ -206,13 +279,14 @@ namespace calibreader
             openFileDialog1.Title = "Select a production log File";
             if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
+                
+                //new Thread(() => new loading_form().ShowDialog()).Start();
+                getStats(openFileDialog1.FileName, Path.GetDirectoryName(openFileDialog1.FileName));
                 for (int j = 0; j < max_column_count; j++)
                     this.viewcali.Columns[j].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-                new Thread(() => new loading_form().ShowDialog()).Start();
-                getStats(openFileDialog1.FileName, Path.GetDirectoryName(openFileDialog1.FileName));
-                loading_form f = new loading_form();
-                f = (loading_form)Application.OpenForms["loading_form"];
-                f.Close();
+                //loading_form f = new loading_form();
+                //f = (loading_form)Application.OpenForms["loading_form"];
+                //f.Close();
             }
         }
 
@@ -222,11 +296,11 @@ namespace calibreader
             DialogResult result = folderDlg.ShowDialog();
 
             if (result == DialogResult.OK)
-            {
-                for (int j = 0; j < max_column_count; j++)
-                    this.viewcali.Columns[j].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            {              
                 new Thread(() => new loading_form().ShowDialog()).Start();
                 getStatsInFolder(folderDlg.SelectedPath);
+                for (int j = 0; j < max_column_count; j++)
+                    this.viewcali.Columns[j].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
                 loading_form f = new loading_form();
                 f = (loading_form)Application.OpenForms["loading_form"];
                 f.Close();
@@ -330,15 +404,12 @@ namespace calibreader
                 //this.viewcali.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
                 int rcount = worksheet.UsedRange.Rows.Count;               
                 int i = 1;
-                //this.viewcali.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-                for (int j=0;j< max_column_count; j++)
-                    this.viewcali.Columns[j].AutoSizeMode= DataGridViewAutoSizeColumnMode.DisplayedCells; 
-
+                //this.viewcali.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;             
                 for (; i < rcount; i++)
                 {
                     //dataGridView1.Rows[i].Cells["Column1"].Value = worksheet.Cells[i + 1, 1].Value;
                     //dataGridView1.Rows[i].Cells["Column2"].Value = worksheet.Cells[i + 1, 2].Value;
-                    this.viewcali.Rows.Add(worksheet.Cells[i + 1, 1].Value, worksheet.Cells[i + 1, 2].Value,
+                    /*this.viewcali.Rows.Add(worksheet.Cells[i + 1, 1].Value, worksheet.Cells[i + 1, 2].Value,
                         worksheet.Cells[i + 1, 3].Value, 
                         worksheet.Cells[i + 1, 4].Value,
                         worksheet.Cells[i + 1, 5].Value, 
@@ -352,9 +423,30 @@ namespace calibreader
                         worksheet.Cells[i + 1, 13].Value, 
                         worksheet.Cells[i + 1, 14].Value, 
                         worksheet.Cells[i + 1, 15].Value, 
-                        worksheet.Cells[i + 1, 16].Value);
+                        worksheet.Cells[i + 1, 16].Value);*/
+                    DataRow newRow = cali_dt.NewRow();
+                    newRow[0] = worksheet.Cells[i + 1, 1].Value;
+                    newRow[1] = worksheet.Cells[i + 1, 2].Value;
+                    newRow[2] = worksheet.Cells[i + 1, 3].Value;
+                    newRow[3] = worksheet.Cells[i + 1, 4].Value;
+                    newRow[4] = worksheet.Cells[i + 1, 5].Value;
+                    newRow[5] = worksheet.Cells[i + 1, 6].Value;
+                    newRow[6] = worksheet.Cells[i + 1, 7].Value;
+                    newRow[7] = worksheet.Cells[i + 1, 8].Value;
+                    newRow[8] = worksheet.Cells[i + 1, 9].Value;
+                    newRow[9] = worksheet.Cells[i + 1, 10].Value;
+                    newRow[10] = worksheet.Cells[i + 1, 11].Value;
+                    newRow[11] = worksheet.Cells[i + 1, 12].Value;
+                    newRow[12] = worksheet.Cells[i + 1, 13].Value;
+                    newRow[13] = worksheet.Cells[i + 1, 14].Value;
+                    newRow[14] = worksheet.Cells[i + 1, 15].Value;
+                    newRow[15] = worksheet.Cells[i + 1, 16].Value;
+                    cali_dt.Rows.Add(newRow);
+                    this.viewcali.DataSource = cali_dt;
                 }
                 workbook.Close();
+                for (int j = 0; j < max_column_count; j++)
+                    this.viewcali.Columns[j].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
                 loading_form f = new loading_form();
                 f = (loading_form)Application.OpenForms["loading_form"];
                 f.Close();
@@ -363,9 +455,18 @@ namespace calibreader
         }
 
         private void OnClearData(object sender, EventArgs e)
-        {
-            this.viewcali.Rows.Clear();
+        {                     
+            this.cali_dt.Clear();         
             this.viewcali.Refresh();
+        }
+
+        private void OnTextChange(object sender, EventArgs e)
+        {
+            if (this.cali_dt.Rows.Count == 0) return;
+            if (String.IsNullOrEmpty(findBox.Text)) (this.viewcali.DataSource as DataTable).DefaultView.RowFilter = string.Empty;
+            else
+            (this.viewcali.DataSource as DataTable).DefaultView.RowFilter = string.Format("ID LIKE '*{0}*' OR lens_type  LIKE '*{0}*' OR focus_idx  LIKE '*{0}*' OR zoom_idx  LIKE '*{0}*' OR inf_tele_focus  LIKE '*{0}*' OR inf_wide_focus  LIKE '*{0}*' OR focus_dynamic_offset  LIKE '*{0}*' OR focus_value  LIKE '*{0}*' OR icr_mode  LIKE '*{0}*' OR production  LIKE '*{0}*' OR awb_low_adj  LIKE '*{0}*' OR awb_high_info  LIKE '*{0}*' OR awb_low_info  LIKE '*{0}*' OR lens_info  LIKE '*{0}*' OR cali_log LIKE '*{0}*' OR production_time LIKE '*{0}*'", findBox.Text);
+            //Debug.WriteLine(findBox.Text);
         }
     }
  }

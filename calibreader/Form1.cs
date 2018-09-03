@@ -468,5 +468,12 @@ namespace calibreader
             (this.viewcali.DataSource as DataTable).DefaultView.RowFilter = string.Format("ID LIKE '*{0}*' OR lens_type  LIKE '*{0}*' OR focus_idx  LIKE '*{0}*' OR zoom_idx  LIKE '*{0}*' OR inf_tele_focus  LIKE '*{0}*' OR inf_wide_focus  LIKE '*{0}*' OR focus_dynamic_offset  LIKE '*{0}*' OR focus_value  LIKE '*{0}*' OR icr_mode  LIKE '*{0}*' OR production  LIKE '*{0}*' OR awb_low_adj  LIKE '*{0}*' OR awb_high_info  LIKE '*{0}*' OR awb_low_info  LIKE '*{0}*' OR lens_info  LIKE '*{0}*' OR cali_log LIKE '*{0}*' OR production_time LIKE '*{0}*'", findBox.Text);
             //Debug.WriteLine(findBox.Text);
         }
+
+        private void onClickAbout(object sender, EventArgs e)
+        {
+            about ab = new about();
+            ab.Show();
+
+        }
     }
  }

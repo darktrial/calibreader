@@ -39,6 +39,9 @@
             this.toolStripTextBox4 = new System.Windows.Forms.ToolStripMenuItem();
             this.findBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
+            this.checkUpdate = new System.Windows.Forms.ToolStripMenuItem();
+            this.about = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.viewcali)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -62,7 +65,8 @@
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1,
-            this.toolStripMenuItem3});
+            this.toolStripMenuItem3,
+            this.toolStripMenuItem5});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1597, 24);
@@ -126,7 +130,7 @@
             // findBox
             // 
             this.findBox.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.findBox.Location = new System.Drawing.Point(240, 0);
+            this.findBox.Location = new System.Drawing.Point(338, 1);
             this.findBox.Name = "findBox";
             this.findBox.Size = new System.Drawing.Size(132, 23);
             this.findBox.TabIndex = 2;
@@ -136,11 +140,33 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label1.Location = new System.Drawing.Point(199, 3);
+            this.label1.Location = new System.Drawing.Point(297, 4);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 16);
             this.label1.TabIndex = 3;
             this.label1.Text = "Find:";
+            // 
+            // toolStripMenuItem5
+            // 
+            this.toolStripMenuItem5.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.checkUpdate,
+            this.about});
+            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(55, 20);
+            this.toolStripMenuItem5.Text = "About";
+            // 
+            // checkUpdate
+            // 
+            this.checkUpdate.Name = "checkUpdate";
+            this.checkUpdate.Size = new System.Drawing.Size(180, 22);
+            this.checkUpdate.Text = "Check update";
+            // 
+            // about
+            // 
+            this.about.Name = "about";
+            this.about.Size = new System.Drawing.Size(180, 22);
+            this.about.Text = "About";
+            this.about.Click += new System.EventHandler(this.onClickAbout);
             // 
             // Form1
             // 
@@ -175,6 +201,9 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripTextBox4;
         private System.Windows.Forms.TextBox findBox;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5;
+        private System.Windows.Forms.ToolStripMenuItem checkUpdate;
+        private System.Windows.Forms.ToolStripMenuItem about;
     }
 }
 

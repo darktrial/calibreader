@@ -17,6 +17,7 @@ using ICSharpCode.SharpZipLib.Tar;
 using ClosedXML.Excel;
 using Excel = Microsoft.Office.Interop.Excel;
 using System.Reflection;
+using System.Threading;
 
 namespace calibreader
 {
@@ -207,9 +208,11 @@ namespace calibreader
             {
                 for (int j = 0; j < max_column_count; j++)
                     this.viewcali.Columns[j].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-                //Debug.WriteLine(openFileDialog1.FileName);
-                //Debug.WriteLine(Path.GetDirectoryName(openFileDialog1.FileName));
+                new Thread(() => new loading_form().ShowDialog()).Start();
                 getStats(openFileDialog1.FileName, Path.GetDirectoryName(openFileDialog1.FileName));
+                loading_form f = new loading_form();
+                f = (loading_form)Application.OpenForms["loading_form"];
+                f.Close();
             }
         }
 
@@ -222,8 +225,11 @@ namespace calibreader
             {
                 for (int j = 0; j < max_column_count; j++)
                     this.viewcali.Columns[j].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-                //Debug.WriteLine(folderDlg.SelectedPath);
+                new Thread(() => new loading_form().ShowDialog()).Start();
                 getStatsInFolder(folderDlg.SelectedPath);
+                loading_form f = new loading_form();
+                f = (loading_form)Application.OpenForms["loading_form"];
+                f.Close();
             }
         }
         public void ExportToExcelWithFormatting(DataGridView dataGridView1)
@@ -237,6 +243,7 @@ namespace calibreader
 
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
+                new Thread(() => new loading_form().ShowDialog()).Start();
                 fileName = saveFileDialog1.FileName;
                 var workbook = new XLWorkbook();
                 var worksheet = workbook.Worksheets.Add(this.Text);
@@ -297,6 +304,10 @@ namespace calibreader
                 }
                 worksheet.Columns().AdjustToContents();
                 workbook.SaveAs(fileName);
+                loading_form f = new loading_form();
+                f = (loading_form)Application.OpenForms["loading_form"];
+                f.Close();
+
                 //MessageBox.Show("Done");
             }
         }
@@ -312,6 +323,7 @@ namespace calibreader
             openFileDialog1.Title = "Select a excel Log File";
             if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
+                new Thread(() => new loading_form().ShowDialog()).Start();
                 Excel.Application app = new Microsoft.Office.Interop.Excel.Application();
                 Excel.Workbook workbook = app.Workbooks.Open(openFileDialog1.FileName);
                 Excel.Worksheet worksheet = workbook.ActiveSheet;
@@ -343,6 +355,10 @@ namespace calibreader
                         worksheet.Cells[i + 1, 16].Value);
                 }
                 workbook.Close();
+                loading_form f = new loading_form();
+                f = (loading_form)Application.OpenForms["loading_form"];
+                f.Close();
+
             }
         }
     }

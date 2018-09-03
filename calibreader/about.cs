@@ -21,7 +21,7 @@ namespace calibreader
 
         private void OnHelpClick(object sender, EventArgs e)
         {
-            Process.Start(https://drive.google.com/open?id=1VKXiTcAx_j6Myg7-96C0fwshLN5X1ZITcFRh95Jd-WY);
+            Process.Start("https://drive.google.com/open?id=1VKXiTcAx_j6Myg7-96C0fwshLN5X1ZITcFRh95Jd-WY");
         }
     }
 }

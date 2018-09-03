@@ -361,5 +361,11 @@ namespace calibreader
 
             }
         }
+
+        private void OnClearData(object sender, EventArgs e)
+        {
+            this.viewcali.Rows.Clear();
+            this.viewcali.Refresh();
+        }
     }
  }

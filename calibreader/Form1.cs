@@ -24,7 +24,7 @@ namespace calibreader
 {
     public partial class Form1 : Form
     {
-        public const int max_column_count=16;
+        public const int max_column_count=17;
         public DataTable cali_dt;
         public static bool ExtractTGZ(String gzArchiveName, String destFolder)
         {
@@ -85,7 +85,7 @@ namespace calibreader
                         else
                             result += stat;
                     }
-                    else return "empty";
+                    //else return "empty";
 
                 }
             }
@@ -127,6 +127,10 @@ namespace calibreader
             cali_dt.Columns.Add(dc);          
             dc = new DataColumn("awb_low_adj", typeof(String));
             cali_dt.Columns.Add(dc);
+
+            dc = new DataColumn("awb_high_adj", typeof(String));
+            cali_dt.Columns.Add(dc);
+
             dc = new DataColumn("awb_high_info", typeof(String));
             cali_dt.Columns.Add(dc);           
             dc = new DataColumn("awb_low_info", typeof(String));
@@ -178,9 +182,16 @@ namespace calibreader
                 string production_time = getProductionLog(statpath + "\\factory\\production_time");
                 string testcase_time = getProductionLog(statpath + "\\factory\\TestCase_time");
                 string awb_low_adj = getProductionLog(statpath + "\\cam_cali\\awb_low_adj");
+
+                string awb_high_adj = getProductionLog(statpath + "\\cam_cali\\awb_high_adj");
+
                 string cali_log = getProductionLog(statpath + "\\cam_cali\\cali_log");
                 string awb_high_info = getProductionLog(statpath + "\\cam_cali\\debug\\awb_high_info");
+                if (awb_high_info.Equals("none"))
+                    awb_high_info = getProductionLog(statpath + "\\cam_cali\\awb_high_info");
                 string awb_low_info = getProductionLog(statpath + "\\cam_cali\\debug\\awb_low_info");
+                if (awb_low_info.Equals("none"))
+                    awb_low_info = getProductionLog(statpath + "\\cam_cali\\awb_low_info");
                 string lens_info = getProductionLog(statpath + "\\cam_cali\\debug\\lens_info");
                 string[] pathSplit = filePath.Split('\\');
                 string[] fileName = pathSplit.Last().Split('.');
@@ -197,11 +208,12 @@ namespace calibreader
                 newRow[8] = icr_mode;
                 newRow[9] = production;
                 newRow[10] = awb_low_adj;
-                newRow[11] = awb_high_info;
-                newRow[12] = awb_low_info;
-                newRow[13] = lens_info;
-                newRow[14] = cali_log;
-                newRow[15] = production_time;
+                newRow[11] = awb_high_adj;
+                newRow[12] = awb_high_info;
+                newRow[13] = awb_low_info;
+                newRow[14] = lens_info;
+                newRow[15] = cali_log;
+                newRow[16] = production_time;
                 //cali_dt.Rows.Add(newRow);
                 cali_dt.Rows.InsertAt(newRow, 0);
                 this.viewcali.DataSource = cali_dt;
@@ -241,9 +253,16 @@ namespace calibreader
                     string production_time = getProductionLog(statpath + "\\factory\\production_time");
                     string testcase_time = getProductionLog(statpath + "\\factory\\TestCase_time");
                     string awb_low_adj = getProductionLog(statpath + "\\cam_cali\\awb_low_adj");
+
+                    string awb_high_adj = getProductionLog(statpath + "\\cam_cali\\awb_high_adj");
+
                     string cali_log = getProductionLog(statpath + "\\cam_cali\\cali_log");
                     string awb_high_info = getProductionLog(statpath + "\\cam_cali\\debug\\awb_high_info");
+                    if (awb_high_info.Equals("none"))
+                        awb_high_info = getProductionLog(statpath + "\\cam_cali\\awb_high_info");
                     string awb_low_info = getProductionLog(statpath + "\\cam_cali\\debug\\awb_low_info");
+                    if (awb_low_info.Equals("none"))
+                        awb_low_info= getProductionLog(statpath + "\\cam_cali\\awb_low_info");
                     string lens_info = getProductionLog(statpath + "\\cam_cali\\debug\\lens_info");
                     string[] pathSplit = filePath.Split('\\');
                     string[] fileName = pathSplit.Last().Split('.');
@@ -260,11 +279,12 @@ namespace calibreader
                     newRow[8] = icr_mode;
                     newRow[9] = production;
                     newRow[10] = awb_low_adj;
-                    newRow[11] = awb_high_info;
-                    newRow[12] = awb_low_info;
-                    newRow[13] = lens_info;
-                    newRow[14] = cali_log;
-                    newRow[15] = production_time;
+                    newRow[11] = awb_high_adj;
+                    newRow[12] = awb_high_info;
+                    newRow[13] = awb_low_info;
+                    newRow[14] = lens_info;
+                    newRow[15] = cali_log;
+                    newRow[16] = production_time;
                     cali_dt.Rows.Add(newRow);
                     this.viewcali.DataSource = cali_dt;
                 }
@@ -442,6 +462,7 @@ namespace calibreader
                     newRow[13] = worksheet.Cells[i + 1, 14].Value;
                     newRow[14] = worksheet.Cells[i + 1, 15].Value;
                     newRow[15] = worksheet.Cells[i + 1, 16].Value;
+                    newRow[16] = worksheet.Cells[i + 1, 17].Value;
                     cali_dt.Rows.Add(newRow);
                     this.viewcali.DataSource = cali_dt;
                 }

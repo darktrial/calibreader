@@ -170,6 +170,7 @@ namespace calibreader
             if (File.Exists(filePath))
             {
                 ExtractTGZ(filePath, tmppath);
+                if (!File.Exists(statpath + "\\lens\\focus_idx")) statpath = directory_path + "\\calitmp\\tmp\\";
                 string focus_idx = getProductionLog(statpath + "\\lens\\focus_idx");
                 string focus_dynamic_offset = getProductionLog(statpath + "\\lens\\focus_dynamic_offset");
                 string inf_tele_focus = getProductionLog(statpath + "\\lens\\inf_tele_focus");
@@ -241,6 +242,8 @@ namespace calibreader
                 if (File.Exists(filePath))
                 {
                     ExtractTGZ(filePath, tmppath);
+                    if (!File.Exists(statpath + "\\lens\\focus_idx")) statpath = directory_path + "\\calitmp\\tmp\\";
+                    System.Diagnostics.Debug.WriteLine("statpath:" + statpath);
                     string focus_idx = getProductionLog(statpath + "\\lens\\focus_idx");
                     string focus_dynamic_offset = getProductionLog(statpath + "\\lens\\focus_dynamic_offset");
                     string inf_tele_focus = getProductionLog(statpath + "\\lens\\inf_tele_focus");
